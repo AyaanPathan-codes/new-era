@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>New Era</title>
+    <link href="https://fonts.googleapis.com/css2?family=Rubik+Mono+One&family=Protest+Strike&display=swap" rel="stylesheet"> <!-- Google Fonts links -->
+    <style>
+        body {
+            margin: 0;
+            font-family: 'Protest Strike', sans-serif; /* Apply Protest Strike font to body */
+            overflow: hidden; /* Prevent scrolling */
+        }
+        span{
+            color: #FF4500;
+        }
+
+        /* Semi-transparent Navbar styles */
+        .navbar {
+            display: flex;
+            justify-content: space-between; /* Space between brand and nav items */
+            padding: 10px 20px; /* Padding for the navbar */
+            background: rgba(0, 0, 0, 0); /* Semi-transparent black background */
+            color: #fff; /* White text color */
+            z-index: 1; /* Keep navbar above video */
+            position: fixed; /* Keep the navbar fixed at the top */
+            width: 100%; /* Full width */
+        }
+
+        .navbar-brand {
+            font-size: 30px; /* Brand font size */
+            letter-spacing: -0.5px;
+            font-family: 'Rubik Mono One', sans-serif; /* Apply Rubik Mono One font */
+            color: #fff; /* Set brand color to white for contrast */
+            font-weight: bold; /* Make brand name bold */
+        }
+
+        .navbar-nav {
+            display: flex; /* Flexbox for nav items */
+            list-style: none; /* Remove bullet points */
+            padding: 0; /* Remove padding */
+            margin-right: 60px; /* Remove margin */
+            margin-top: 7px;
+            color: (#008080);
+            flex-wrap: wrap; /* Allow wrapping to prevent overflow */
+            max-width: calc(100% - 40px); /* Prevent overflow by limiting the width */
+        }
+
+        .nav-item {
+            margin-left: 10px; /* Reduced space between nav items */
+            margin-right: 10px; /* Added right margin for spacing */
+        }
+
+        .nav-link {
+            text-decoration: none; /* Remove underline */
+            color: #FF4500; /* Link color set to white for contrast */
+            padding: 8px 12px; /* Padding for nav links */
+            font-size: 25px; /* Increased text size for navbar items */
+            transition: border-bottom 0.3s; /* Smooth hover effect */
+        }
+
+        .nav-link:hover {
+            border-bottom: 2px solid cadetblue; /* Border on hover */
+        }
+
+        /* Video styles */
+        .video-container {
+            position: relative; /* Allow positioning */
+            width: 100%; /* Full width */
+            height: 100vh; /* Full height of the viewport */
+            overflow: hidden; /* Hide any overflow */
+            z-index: 0; /* Keep the video behind the navbar */
+        }
+
+        .video {
+            width: 100%; /* Make video responsive */
+            height: 100%; /* Full height */
+            object-fit: cover; /* Cover the area without stretching */
+        }
+
+        /* Text overlay styles */
+        .overlay {
+            position: absolute; /* Positioning the text */
+            top: 50%; /* Center vertically */
+            left: 50%; /* Center horizontally */
+            transform: translate(-50%, -50%); /* Centering adjustment */
+            color: #fff; /* White text color */
+            text-align: center; /* Center text alignment */
+            z-index: 1; /* Keep above video */
+        }
+
+        .title {
+            font-size: 48px; /* Large title size */
+            font-weight: bold; /* Bold title */
+            text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.7); /* Graphite shadow effect */
+        }
+
+        .quote {
+            font-size: 24px; /* Quote size */
+            font-style: italic; /* Italicize the quote */
+            margin-top: 10px; /* Space above the quote */
+            text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5); /* Shadow effect for quote */
+        }
+
+        /* Hamburger Menu */
+        .hamburger {
+            display: none; /* Hide hamburger by default */
+            flex-direction: column; /* Stack items vertically */
+            cursor: pointer; /* Change cursor to pointer */
+            margin-left: auto; /* Push hamburger to the right */
+        }
+
+        .line {
+            height: 3px; /* Height of the lines */
+            width: 30px; /* Adjust width of lines for better visibility */
+            background-color: #fff; /* Color of the lines */
+            margin: 3px 0; /* Space between lines */
+            margin-right: 30px;
+        }
+
+      /* Media queries for responsiveness */
+      @media (max-width: 768px) {
+    .navbar-nav {
+        display: none; /* Hide navbar items on small screens */
+        flex-direction: column; /* Arrange items in a row */
+        margin-left: 100px;
+        position: absolute; /* Position it below the navbar */
+        top: 60px; /* Position below the navbar */
+        left: 50%; /* Center from the left */
+        transform: translateX(-50%); /* Center it perfectly */
+        background-color: rgba(0, 0, 0, 0.5); /* Background color for dropdown */
+        width: 80%; /* Adjust width as needed */
+        z-index: 2; /* Keep above video */
+        overflow-y: hidden; /* Disable vertical scrolling */
+        padding: 0; /* Remove padding from navbar */
+        justify-content: center;
+    }
+
+    .navbar-nav.active {
+        display: flex; /* Show menu when active */
+    }
+
+    .nav-item {
+        margin: 0 10px; /* Space between items */
+        width: auto; /* Allow item width to adjust based on content */
+    }
+
+    .nav-link {
+        display: block; /* Make the link take the full width */
+        width: auto; /* Ensure the link takes the full width of the item */
+    }
+
+    .hamburger {
+        display: flex; /* Show hamburger icon */
+    }
+}
+        
+    </style>
+</head>
+<body>
+    <nav class="navbar">
+        <div class="navbar-brand">New-<span>Era </span></div>
+        <div class="hamburger" onclick="toggleMenu()">
+            <div class="line"></div>
+            <div class="line"></div>
+            <div class="line"></div>
+        </div>
+        <ul class="navbar-nav" id="menu"> 
+            <li class="nav-item">
+                <a class="nav-link active" href="#">Mind</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#">Care</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#">Fitness</a>
+            </li>
+        </ul>
+    </nav>
+
+    <div class="video-container">  
+        <video class="video" autoplay muted loop>
+            <source src="video/Fitness Cinematic Video _ Sony A7siii _ Gym Video.mp4" type="video/mp4">
+            <source src="video/Fitness Cinematic Video _ Sony A7siii _ Gym Video.mp4" type="video/ogg">
+            Your browser does not support HTML5 video.
+        </video>
+        
+        <div class="overlay"> <!-- Overlay for the text -->
+            <div class="title">AS WE ARE THE <span>NEW ERA </span></div>
+            <div class="quote"><span>"</span>Your only limit is you.<span>"</span></div>
+        </div>
+    </div>
+
+    <script>
+        function toggleMenu() {
+            const menu = document.getElementById('menu');
+            menu.classList.toggle('active');
+        }
+    </script>
+</body>
+</html>
