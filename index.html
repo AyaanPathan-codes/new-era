@@ -8,235 +8,126 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" integrity="sha384-k6RqeWeci5ZR/Lv4MR0sA0FfDOM0y+7Y5+1pM0VQG93oG+1yL0Y1iMoeM4mGh2i4" crossorigin="anonymous">
 
     <style>
-        body {
-            margin: 0;
-            font-family: 'Protest Strike', sans-serif; /* Apply Protest Strike font to body */
-            overflow: hidden; /* Prevent scrolling */
-        }
+body {
+    margin: 0;
+    font-family: 'Protest Strike', sans-serif; /* Apply Protest Strike font to body */
+    overflow: hidden; /* Prevent scrolling */
+}
 
-        span {
-            color: #FF4500;
-        }
+span {
+    color: #FF4500;
+}
 
-        /* Semi-transparent Navbar styles */
-        .navbar {
-            display: flex;
-            justify-content: space-between;
-            padding: 10px 20px;
-            background: rgba(0, 0, 0, 0);
-            color: #fff;
-            z-index: 1;
-            position: fixed;
-            width: 100%;
-        }
+/* Semi-transparent Navbar styles */
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    padding: 10px 20px;
+    background: rgba(0, 0, 0, 0);
+    color: #fff;
+    z-index: 1;
+    position: fixed;
+    width: 100%;
+}
 
-        .navbar-brand {
-            font-size: 30px;
-            letter-spacing: -0.5px;
-            font-family: 'Rubik Mono One', sans-serif;
-            color: #fff;
-            font-weight: bold;
-        }
+.navbar-brand {
+    font-size: 30px;
+    letter-spacing: -0.5px;
+    font-family: 'Rubik Mono One', sans-serif;
+    color: #fff;
+    font-weight: bold;
+}
 
-        .navbar-nav {
-            display: flex;
-            list-style: none;
-            padding: 0;
-            margin-right: 60px;
-            margin-top: 7px;
-            flex-wrap: wrap;
-            max-width: calc(100% - 40px);
-        }
+.navbar-nav {
+    display: flex;
+    list-style: none;
+    padding: 0;
+    margin-right: 60px;
+    margin-top: 7px;
+    flex-wrap: nowrap; /* No wrapping */
+}
 
-        .nav-item {
-            margin-left: 10px;
-            margin-right: 10px;
-        }
+.nav-item {
+    margin-left: 10px;
+    margin-right: 10px;
+    flex-shrink: 1; /* Allow items to shrink */
+}
 
-        .nav-link {
-            text-decoration: none;
-            color: #FF4500;
-            padding: 8px 12px;
-            font-size: 25px;
-            transition: border-bottom 0.3s;
-        }
+.nav-link {
+    text-decoration: none;
+    color: #FF4500;
+    padding: 8px 12px;
+    font-size: 25px;
+    transition: border-bottom 0.3s;
+    white-space: nowrap; /* Prevent text wrapping */
+}
 
-        .nav-link:hover {
-            border-bottom: 2px solid cadetblue;
-        }
+.nav-link:hover {
+    border-bottom: 2px solid cadetblue;
+}
 
-        /* Video styles */
-        .video-container {
-            position: relative;
-            width: 100%;
-            height: 100vh;
-            overflow: hidden;
-            z-index: 0;
-        }
+/* Video styles */
+.video-container {
+    position: relative;
+    width: 100%;
+    height: 100vh;
+    overflow: hidden;
+    z-index: 0;
+}
 
-        .video {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-        }
+.video {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
 
-        /* Text overlay styles */
-        .overlay {
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            color: #fff;
-            text-align: center;
-            z-index: 1;
-        }
+/* Text overlay styles */
+.overlay {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: #fff;
+    text-align: center;
+    z-index: 1;
+}
 
-        .title {
-            font-size: 48px;
-            font-weight: bold;
-            text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.7);
-        }
-
-        .quote {
-            font-size: 24px;
-            font-style: italic;
-            margin-top: 10px;
-            text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5);
-        }
-
-        /* Hamburger Menu */
-        .hamburger {
-            display: none;
-            flex-direction: column;
-            cursor: pointer;
-            margin-left: auto;
-            margin-top: -30px;
-            position: absolute;
-            z-index: 2;
-        
-        }
-
-        .line {
-            height: 3px;
-            width: 30px;
-            background-color: #fff;
-            margin: 3px 0;
-            margin-left: 420px;
-            z-index: 2;
-            
-        }
-
-        /* Button styles */
-        .explore-button {
-            background-color: white;
-            color: #FF4500;
-            font-size: 18px;
-            padding: 10px 20px;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-            transition: background-color 0.3s, transform 0.3s;
-            position: relative;
-            z-index: 2;
-            margin-top: 20px;
-        }
-
-        .explore-button:hover {
-            background-color: #fff;
-            transform: translateY(-5px);
-        }
-
-        .arrow {
-            display: block;
-            margin: 10px auto;
-            width: 0; 
-            height: 0; 
-            border-left: 5px solid transparent; 
-            border-right: 5px solid transparent; 
-            border-top: 10px solid #FF4500; /* Arrow color */
-        }
-
-        /* Media queries for responsiveness */
-        @media (max-width: 768px) {
+/* Mobile-specific styles */
+@media (max-width: 480px) {
     .navbar {
-        padding: 10px 15px;
+        padding: 5px 10px;
     }
 
     .navbar-brand {
-        font-size: 20px; /* Reduce font size of the brand */
-    }
-
-    .nav-link {
-        font-size: 18px; /* Reduce font size of the links */
-    }
-
-    .hamburger {
-        display: flex;
-        flex-direction: column;
-        cursor: pointer;
-        z-index: 2;
-        position: absolute;
-        top: 30px;
-        right: 40px;
-    }
-
-    .line {
-        height: 3px;
-        width: 25px;
-        background-color: #fff;
-        margin: 4px 0;
+        font-size: 14px; /* Smaller brand name for smaller screens */
+        flex-shrink: 0;  /* Don't allow shrinking of logo */
+        margin-right: 10px; /* Add some space around the logo */
     }
 
     .navbar-nav {
-        display: none;
-        flex-direction: column;
-        width: 100%;
-        background-color: rgba(0, 0, 0, 0.7);
-        position: absolute;
-        top: 50px;
-        left: 0;
-        text-align: center;
-    }
-
-    .navbar-nav.active {
-        display: flex;
+        flex-direction: row;
+        justify-content: space-between; /* Spread items */
+        flex-wrap: nowrap; /* Prevent wrapping */
+        width: 100%; /* Full width */
+        margin: 0; /* Remove margin */
     }
 
     .nav-item {
-        margin: 10px 0;
+        margin: 0 5px; /* Adjust spacing for smaller screens */
+        flex-shrink: 1; /* Allow items to shrink */
     }
 
     .nav-link {
-        padding: 10px 0;
-        width: 100%;
+        font-size: 14px; /* Smaller font size */
+        white-space: nowrap; /* Prevent wrapping */
     }
 }
 
-            /* Mobile styles for title and quote */
-            .title,
-            .quote {
-                font-family: 'Roboto', sans-serif; /* Use Roboto font on mobile */
-            }
-
-            .title {
-                font-size: 36px; /* Reduce title size on mobile */
-            }
-
-            .quote {
-                font-size: 20px; /* Reduce quote size on mobile */
-            }
-        
     </style>
 </head>
 <body>
     <div class="navbar">
-        <div class="navbar-brand">New-<span>Era</span>
-        <div class="hamburger" onclick="toggleMenu()">
-            <div class="line"></div>
-            <div class="line"></div>
-            <div class="line"></div>
-        </div>
-        </div>
+        <div class="navbar-brand">New-<span>Era</span></div>
         <ul class="navbar-nav">
             <li class="nav-item"><a class="nav-link" href="#">Home</a></li>
             <li class="nav-item"><a class="nav-link" href="#">About</a></li>
@@ -254,16 +145,8 @@
             <div class="title">We Are The  <span>New Era</span></div>
             <div class="quote"><span>" </span>Your <span>Only Limit</span> Is You<span> "</span></div>
             <button class="explore-button">Explore Now</button>
-            <div class="arrow"></div>
         </div>
     </div>
 
-    <script>
-        // Hamburger menu toggle function
-        function toggleMenu() {
-            const navbarNav = document.querySelector('.navbar-nav');
-            navbarNav.classList.toggle('active');
-        }
-    </script>
 </body>
 </html>
